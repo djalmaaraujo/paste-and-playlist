@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 
 import Login from '../Login';
-import Paste from '../Paste';
+import Search from '../Search';
 import Results from '../Results';
 
 import './index.css';
@@ -15,7 +15,7 @@ const App = () => (
     <div>
       <Route exact path="/" component={Login}/>
       <Route exact path="/auth" component={Login}/>
-      <Route path="/paste" component={Paste}/>
+      <Route path="/search" component={Search} />
       <Route path="/results" component={Results} />
     </div>
   </Router>

@@ -124,6 +124,10 @@ h1 {
   padding: 0;
 }
 
+.list__mediaTracksThumbnail {
+  max-width: 8rem;
+}
+
 .form__item {
   margin-bottom: 1rem;
 }
@@ -139,4 +143,34 @@ h1 {
   font-style: 2rem;
   width: 100%;
   outline: none;
+}
+
+.player {
+  clear: both;
+  min-height: 40px;
+}
+
+.player__button,
+.player__audio {
+  float: left;
+}
+
+.player__button {
+  margin: 0 0 0 10px;
+  background-color: #1DB954;
+  color: white;
+  padding: 0.5rem;
+}
+
+.list__item--selectedTrack .player__button {
+  background-color: #dc3545;
+}
+
+.player__button .fa {
+  color: white;
+}
+
+
+audio {
+  width: 5rem;
 }

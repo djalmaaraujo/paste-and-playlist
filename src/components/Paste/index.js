@@ -1,33 +1,44 @@
 import React, { Component } from 'react';
-import './index.css';
 
-class Paste extends Component {
+const placeHolderText = `Example:\n\nCharles Bradley - Where Do We Go From Here?\nEddie Hope & The Mannish Boys - Fool No More\nLee Fields - Let's Talk it Over\nHenry Ford - Take Me for What I Am\nThe Heavy - Short Change Hero`;
+
+export default class Paste extends Component {
+  state = {tracks: ""}
+
+  _handleChange({ target }) {
+    this.setState({tracks: target.value});
+
+    this.props._handleChange(target.value);
+  }
+
   render() {
     return (
-      <section className="card card--primary card--example">
-        <header className="card__header">
-          <h4>Paste your list here</h4>
-        </header>
+      <div>
+        <section className="card card--primary card--example">
+          <header className="card__header">
+            <h4>Paste your list here</h4>
+          </header>
 
-        <div className="card__content">
-          <p>Paste a list of songs with the pattern: <strong>artist name - song title</strong> in the textarea below:</p>
+          <div className="card__content">
+            <p>Paste a list of songs with the pattern: <strong>artist name - song title</strong> in the textarea below:</p>
 
-          <textarea name="" className="paste" autofocus placeholder="Example:
+            <textarea
+              value={this.state.tracks}
+              onChange={this._handleChange.bind(this)}
+              className="paste"
+              autoFocus
+              placeholder={placeHolderText}></textarea>
 
-    Charles Bradley - Where Do We Go From Here?
-    Eddie Hope & The Mannish Boys - Fool No More
-    Lee Fields - Let's Talk it Over
-    Henry Ford - Take Me for What I Am
-    The Heavy - Short Change Hero"></textarea>
+            <hr />
 
-          <hr />
-
-          <a href="index.html" className="button">Logout</a>
-          <button className="button button--ok"  onclick="window.location.href='results.html'">Start searching</button>
-        </div>
-      </section>
+            <button
+              className="button button--ok"
+              onClick={this.props._submitSearch.bind(this)}
+            >Start searching
+            </button>
+          </div>
+        </section>
+      </div>
     );
   }
 }
-
-export default Paste;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 
 import './index.css';
+import Auth from '../../utils/Auth';
 
 class Login extends Component {
   constructor(props) {
@@ -57,36 +58,23 @@ class Login extends Component {
   }
 
   componentWillMount() {
-    const tokenExists = localStorage.getItem('pnp_auth_token') || false;
-    const expiresTime = parseInt(localStorage.getItem('pnp_auth_token_expiration_time'), 10) || false;
+    const status = Auth.isLogged();
 
-    if (tokenExists) {
-      const now = new Date().getTime();
-      const status = (expiresTime <= now) ? true : false;
-
-      if (status === false) {
-        localStorage.removeItem('pnp_auth_token');
-        localStorage.removeItem('pnp_auth_token_expiration_time');
-      }
-
-      this.setState({logged: status});
-    }
-
+    this.setState({ logged: status });
   }
 
   componentDidMount() {
     const params = this._getHashParams();
 
     if (params.access_token) {
-      localStorage.setItem('pnp_auth_token', params.access_token);
-      localStorage.setItem('pnp_auth_token_expiration_time', new Date().getTime() + parseInt(params.expires_in, 10));
+      Auth.login(params);
       this.setState({logged: true})
     }
   }
 
   render() {
     if (this.state.logged) {
-      return (<Redirect to={{pathname: '/paste'}}/>);
+      return (<Redirect to={{pathname: '/search'}}/>);
     }
 
     return (
