@@ -54,7 +54,7 @@ class Results extends Component {
   }
 
   _addToExistingPlaylist() {
-    this.setState({redirectTo: 'add_to_playlist'});
+    this.setState({redirectTo: 'add-to-playlist'});
   }
 
   render() {
