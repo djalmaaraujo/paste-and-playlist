@@ -8,6 +8,8 @@ import './index.css';
 import Auth from '../../utils/Auth';
 import Spotify from '../../utils/Spotify';
 
+const PUBLIC_URL = (process.env.PUBLIC_URL) ? process.env.PUBLIC_URL : 'http://localhost:3000'
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -42,7 +44,7 @@ class Login extends Component {
   _requestLogin() {
     const CLIENT_ID = 'adaa1a91c2374e518aef36993979e33a';
 
-    const redirect_uri = 'http://localhost:3000/auth'; // Your redirect uri
+    const redirect_uri = `${PUBLIC_URL}/auth`; // Your redirect uri
 
     const state = this._generateRandomString(16);
 
