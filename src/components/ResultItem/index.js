@@ -17,15 +17,21 @@ class ResultItem extends Component {
       return (
         <li key={index} className={track.selected ? 'list__item--selectedTrack' : ''}>
           <p>
-            <span>{ track.name }</span>
+            <span>{ track.selected && <span className="fa fa-check color--spotify"></span> } <strong className="color--spotify">{ track.name }</strong> — Album: <strong>{ track.album.name }</strong></span>
           </p>
 
-          <div className="player">
-            <audio className="player__audio" src={ track.preview_url } controls></audio>
-            { !track.selected && <a className="player__button" onClick={() => { this._addToPlaylist(track) }}> <span className="fa fa-plus-circle"></span> Add to list</a> }
-            { track.selected && <a className="player__button" onClick={() => { this._removeFromPlaylist(track) }}> <span className="fa fa-minus-circle"></span> Remove from list</a> }
-          </div>
 
+          <div className="list__mediaTracksItem">
+            { track.album &&
+              <img src={track.album.images[0].url} alt="Album thumbnail" /> }
+
+            <div className="player">
+              <audio className="player__audio" src={ track.preview_url } controls></audio>
+              <br />
+              { !track.selected && <a className="player__button" onClick={() => { this._addToPlaylist(track) }}> <span className="fa fa-plus-circle"></span> Add to list</a> }
+              { track.selected && <a className="player__button" onClick={() => { this._removeFromPlaylist(track) }}> <span className="fa fa-minus-circle"></span> Remove from list</a> }
+            </div>
+          </div>
           <hr />
         </li>
       );
@@ -34,11 +40,6 @@ class ResultItem extends Component {
     const trackItem = (item, index) => {
       return (
         <li className="list__item" key={index}>
-          <div className="list__media">
-            { (item.data.items.length > 0 && item.data.items[0].album) &&
-                <img src={item.data.items[0].album.images[0].url} className="list__mediaTracksThumbnail" alt="Album thumbnail" /> }
-          </div>
-
           <div className="list__details">
             <h5>{item.artist} - {item.title}</h5>
 

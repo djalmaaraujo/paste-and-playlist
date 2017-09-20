@@ -6,7 +6,6 @@ import {
 
 import Login from '../Login';
 import Search from '../Search';
-import Results from '../Results';
 
 import './index.css';
 

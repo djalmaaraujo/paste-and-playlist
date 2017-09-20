@@ -1,3 +1,6 @@
+/*global location*/
+/*eslint no-restricted-globals: ["error", "location"]*/
+
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 
@@ -14,17 +17,9 @@ class Login extends Component {
    * Obtains parameters from the hash of the URL
    * @return Object
    */
-  _getHashParams() {
-    const hashParams = {};
-    let e;
-    const r = /([^&;=]+)=?([^&;]*)/g;
-    const q = window.location.hash.substring(1);
-
-    while (e = r.exec(q)) {
-       hashParams[e[1]] = decodeURIComponent(e[2]);
-    }
-
-    return hashParams;
+  _getHashParams(key) {
+    const matches = window.location.hash.match(new RegExp(key+'=([^&]*)'));
+    return matches ? matches[1] : null;
   }
 
   /**
@@ -64,9 +59,14 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    const params = this._getHashParams();
+    const access_token = this._getHashParams('access_token');
 
-    if (params.access_token) {
+    if (access_token) {
+      const params = {
+        access_token,
+        expires_in: this._getHashParams('expires_in')
+      };
+
       Auth.login(params);
       this.setState({logged: true})
     }

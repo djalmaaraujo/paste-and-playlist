@@ -67,7 +67,7 @@ class Results extends Component {
           </header>
 
           <div className="card__content">
-            <p>There are tracks with more than one result. Please select the version of the song you want. You can listen to the song preview. Once your are done, add to the list and at the end, add or created a new playlist.</p>
+            <p>Some tracks in your list has more than 1 match, but you can choose the version you want. This basically means that we found the same song in different albums, remixes, etc. Add one or more versions to your selected list.</p>
 
             <h4>Your list has {query.length} songs, we found {this.state.totalMatches} matches:</h4>
 

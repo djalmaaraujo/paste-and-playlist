@@ -146,31 +146,41 @@ h1 {
 }
 
 .player {
-  clear: both;
-  min-height: 40px;
-}
-
-.player__button,
-.player__audio {
-  float: left;
+  flex: 1;
 }
 
 .player__button {
-  margin: 0 0 0 10px;
-  background-color: #1DB954;
-  color: white;
-  padding: 0.5rem;
+  cursor: pointer;
+  margin: .3rem 0 0 .5rem;
+  background-color: transparent;
+  border: .1rem solid #000;
+  padding: .3rem .3rem .2rem .3rem;
+  font-size: 1rem;
 }
 
+.player__button:hover .fa,
+.player__button:hover {
+  color: #1DB954;
+}
+
+.list__item--selectedTrack .player__button .fa,
 .list__item--selectedTrack .player__button {
+  color: white;
   background-color: #dc3545;
 }
 
-.player__button .fa {
-  color: white;
+audio {
+  width: 6rem;
+  margin-bottom: 2rem;
 }
 
+.list__mediaTracksItem {
+  display: flex;
+  align-items: flex-start;
+  line-height: 1rem;
+}
 
-audio {
-  width: 5rem;
+.list__mediaTracksItem img {
+  max-width: 6rem;
+  margin-right: 2rem;
 }
