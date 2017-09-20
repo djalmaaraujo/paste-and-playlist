@@ -24,7 +24,7 @@ class Search extends Component {
     playList.push(item);
 
     this.setState({playList});
-    console.log(playList);
+    this._updateStorage(JSON.stringify(playList));
   }
 
   _removeFromPlaylist(item) {
@@ -33,8 +33,12 @@ class Search extends Component {
       return el.id.toString() !== item.id.toString();
     });
 
-    this.setState({newPlaylist});
-    console.log(newPlaylist);
+    this.setState({playList: newPlaylist});
+    this._updateStorage(JSON.stringify(newPlaylist));
+  }
+
+  _updateStorage(playList) {
+    localStorage.setItem('playLists', playList);
   }
 
   componentWillMount() {

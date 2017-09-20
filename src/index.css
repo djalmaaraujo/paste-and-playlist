@@ -16,6 +16,10 @@ ol, ul, ul ul{
   padding: 0;
 }
 
+a {
+  cursor: pointer;
+}
+
 .container {
   display: flex;
   align-items: center;

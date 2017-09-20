@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import {
+  Redirect
+} from 'react-router-dom'
 
 import Auth from '../../utils/Auth';
 import Spotify from '../../utils/Spotify';
-import ResultItem from '../ResultItem';
 import Spinner from '../Spinner';
+import ResultItem from '../ResultItem';
 import GuidGenerator from '../../utils/GuidGenerator';
 
 import './index.css';
@@ -50,8 +53,15 @@ class Results extends Component {
     });
   }
 
+  _addToExistingPlaylist() {
+    this.setState({redirectTo: 'add_to_playlist'});
+  }
+
   render() {
     const query = this.props.query;
+
+    if (this.state.redirectTo)
+      return (<Redirect to={{ pathname: this.state.redirectTo }}/>);
 
     if (this.state.results.length === 0) {
       return (
@@ -82,9 +92,9 @@ class Results extends Component {
 
               <h4>You selected <strong className="color--spotify">{this.props.playList.length}</strong> tracks. What do you want to do?</h4>
 
-              <a href="/test" className="button button--primary">Add to an existing playlist</a>
+              <a className="button button--primary" onClick={this._addToExistingPlaylist.bind(this)}>Add to an existing playlist</a>
               <span>&nbsp; or &nbsp;</span>
-              <a href="/test" className="button button--ok">Create a new playlist</a>
+              <a className="button button--ok" onClick={this._addToExistingPlaylist.bind(this)}>Create a new playlist</a>
             </div>
           </div>
         </section>
