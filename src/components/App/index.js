@@ -11,16 +11,14 @@ import CreateNewPlaylist from '../CreateNewPlaylist';
 
 import './index.css';
 
-const PUBLIC_URL = process.env.PUBLIC_URL;
-
 const App = () => (
   <Router>
     <div>
-      <Route exact path={`${PUBLIC_URL}/`} component={Login}/>
-      <Route exact path={`${PUBLIC_URL}/auth`} component={Login}/>
-      <Route path={`${PUBLIC_URL}/search`} component={Search} />
-      <Route path={`${PUBLIC_URL}/add-to-playlist`} component={AddToPlaylist} />
-      <Route path={`${PUBLIC_URL}/create-new-playlist`} component={CreateNewPlaylist} />
+      <Route exact path="/" component={Login}/>
+      <Route exact path="/auth" component={Login}/>
+      <Route path="/search" component={Search} />
+      <Route path="/add-to-playlist" component={AddToPlaylist} />
+      <Route path="/create-new-playlist" component={CreateNewPlaylist} />
     </div>
   </Router>
 )
