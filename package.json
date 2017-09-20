@@ -2,14 +2,14 @@
   "name": "pastenplay",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://pasteandplaylist.djalmaaraujo.com",
+  "homepage": "http://8747a09b.ngrok.io",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "PUBLIC_URL='http://8747a09b.ngrok.io' react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "predeploy": "PUBLIC_URL='http://pasteandplaylist.djalmaaraujo.com' npm run build",
-    "deploy": "PUBLIC_URL='http://pasteandplaylist.djalmaaraujo.com' gh-pages -d build"
+    "predeploy": "PUBLIC_URL='http://8747a09b.ngrok.io' npm run build",
+    "deploy": "PUBLIC_URL='http://8747a09b.ngrok.io' gh-pages -d build"
   },
   "dependencies": {
     "react": "^15.6.1",

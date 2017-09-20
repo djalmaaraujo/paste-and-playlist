@@ -74,7 +74,8 @@ class AddToPlaylist extends Component {
               <span className="fa fa-check-circle color--spotify fa-2x">&nbsp;</span>
             }
 
-            <img src={playlist.images[0].url} alt="Playlist thumbnail" className="list__mediaPlaylistThumbnail" />
+            { (playlist.images && playlist.images.length > 0) &&
+              <img src={playlist.images[0].url} alt="Playlist thumbnail" className="list__mediaPlaylistThumbnail" /> }
           </div>
 
           <div className="list__details">
