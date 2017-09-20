@@ -8,7 +8,7 @@ import './index.css';
 import Auth from '../../utils/Auth';
 import Spotify from '../../utils/Spotify';
 
-const PUBLIC_URL = (process.env.PUBLIC_URL) ? process.env.PUBLIC_URL : 'http://localhost:3000'
+const PUBLIC_URL = (!!process.env.PUBLIC_URL) ? process.env.PUBLIC_URL : 'http://localhost:3000'
 
 class Login extends Component {
   constructor(props) {
@@ -74,7 +74,6 @@ class Login extends Component {
       const me = Spotify.me()
 
       me.then((me) => {
-        console.log(me);
         Auth.login(Object.assign(params, me));
         this.setState({logged: true})
       });
