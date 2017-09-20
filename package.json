@@ -8,8 +8,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "predeploy": "PUBLIC_URL='http://pasteandplaylist.djalmaaraujo.com' npm run build",
+    "deploy": "PUBLIC_URL='http://pasteandplaylist.djalmaaraujo.com' gh-pages -d build"
   },
   "dependencies": {
     "react": "^15.6.1",
