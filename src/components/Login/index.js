@@ -10,7 +10,7 @@ import Spotify from '../../utils/Spotify';
 
 const PUBLIC_URL = (!!process.env.PUBLIC_URL) ? process.env.PUBLIC_URL : 'http://localhost:3000'
 
-console.log(!!process.env.PUBLIC_URL);
+console.log(process.env.PUBLIC_URL);
 
 class Login extends Component {
   constructor(props) {
