@@ -8,7 +8,7 @@ import './index.css';
 import Auth from '../../utils/Auth';
 import Spotify from '../../utils/Spotify';
 
-const PUBLIC_URL = (!!process.env.PUBLIC_URL) ? `https://djalmaaraujo.github.io${process.env.PUBLIC_URL}` : 'http://localhost:3000'
+const PUBLIC_URL = (!!process.env.PUBLIC_URL) ? 'http://pasteandplaylist.djalmaaraujo.com' : 'http://localhost:3000'
 
 class Login extends Component {
   constructor(props) {
