@@ -36,12 +36,21 @@ class AddToPlaylist extends Component {
 
     this.setState({playlists: []});
 
-    Spotify.addTracksToPlaylist(tracks, playlist).then((json) => {
+    const addSongs = Spotify.addTracksToPlaylist(tracks, playlist)
+
+    addSongs.then((json) => {
       const changed = this.state.playlistsChanged;
       changed.push(playlist.id);
 
       this.setState({playlistsChanged: changed});
       this._fetchPlaylists();
+    });
+
+    addSongs.catch((error) => {
+      if (error.code === 403) {
+        alert(`This playlist is not yours or you don't have permissions to add tracks. No donuts for you.`);
+        this._fetchPlaylists();
+      }
     });
   }
 

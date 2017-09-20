@@ -26,7 +26,7 @@ class Results extends Component {
     let totalMatches = this.state.totalMatches;
 
     this.props.query.map((line) => {
-      if (!line) return;
+      if (!line) return false;
 
       const [ artist, title ] = line.split('-');
 
@@ -38,8 +38,8 @@ class Results extends Component {
         results.push({
           uid: GuidGenerator(),
           data: json.tracks,
-          artist: artist.trim(),
-          title: title.trim()
+          artist: (artist) ? artist.trim() : '',
+          title: (title) ? title.trim() : ''
         });
 
         totalMatches += parseInt(json.tracks.total, 10);
