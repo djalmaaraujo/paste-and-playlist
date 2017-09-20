@@ -66,8 +66,6 @@ const Spotify = {
   addTracksToPlaylist(tracks, playlist) {
     let ADD_TO_PLAYLIST_URL = `${BASE_URL}/users/${playlist.owner.id}/playlists/${playlist.id}/tracks`;
 
-    console.log(tracks.map((t) => {return t.uri}));
-
     return new Promise((resolve, reject) => {
       const request = requestMethod(ADD_TO_PLAYLIST_URL, {
         method: 'POST',
@@ -94,10 +92,10 @@ const Spotify = {
   },
 
   createPlaylist(playlistName) {
-    let ADD_TO_PLAYLIST_URL = `${BASE_URL}/users/djalmaaraujo/playlists`;
+    let CREATE_PLAYLIST_URL = `${BASE_URL}/users/${Auth.me().id}/playlists`;
 
     return new Promise((resolve, reject) => {
-      const request = requestMethod(ADD_TO_PLAYLIST_URL, {
+      const request = requestMethod(CREATE_PLAYLIST_URL, {
         method: 'POST',
         body: JSON.stringify({
           name: playlistName,
@@ -105,6 +103,29 @@ const Spotify = {
           description: `Created using paste'n'Playlist!. Create yours too: https://djalmaaraujo.github.io/paste-and-playlist/`
         })
       });
+
+      request.then((response) => {
+        if (!response.ok) {
+          reject({
+            code: response.status,
+            error: response.statusText
+          });
+        }
+
+        response.json().then((json) => {
+          resolve(json);
+        });
+      }, (error) => {
+        reject({code: null, error: error.message})
+      });
+    });
+  },
+
+  me() {
+    let ME_URL = `${BASE_URL}/me`;
+
+    return new Promise((resolve, reject) => {
+      const request = requestMethod(ME_URL);
 
       request.then((response) => {
         if (!response.ok) {

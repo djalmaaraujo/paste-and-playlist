@@ -6,6 +6,7 @@ import {
 import Auth from '../../utils/Auth';
 import Spotify from '../../utils/Spotify';
 import Spinner from '../Spinner';
+import IrreversibleWarning from '../IrreversibleWarning';
 
 class AddToPlaylist extends Component {
   state = {playlists: [], playlistsChanged: []};
@@ -23,7 +24,6 @@ class AddToPlaylist extends Component {
 
     playlists.then((userPlaylists) => {
       this.setState({playlists: userPlaylists});
-      console.log(userPlaylists);
     });
 
     playlists.catch((error) => {
@@ -36,10 +36,7 @@ class AddToPlaylist extends Component {
 
     this.setState({playlists: []});
 
-    console.log('Adding songs to', tracks, playlist);
-
     Spotify.addTracksToPlaylist(tracks, playlist).then((json) => {
-      console.log(json);
       const changed = this.state.playlistsChanged;
       changed.push(playlist.id);
 
@@ -73,11 +70,7 @@ class AddToPlaylist extends Component {
 
           <div className="list__details">
             <h5>{ playlist.name }</h5>
-            { (this.state.playlistsChanged.indexOf(playlist.id) === -1) ?
-              <p>{playlist.tracks.total} songs.</p>
-            :
-              <p className="color--spotify"><strong>You added songs to this playlist</strong></p>
-            }
+            <p>{playlist.tracks.total} songs. { (this.state.playlistsChanged.indexOf(playlist.id) > -1) && <strong className="color--spotify">You added songs to this playlist</strong> }</p>
           </div>
         </li>
       );
@@ -93,7 +86,7 @@ class AddToPlaylist extends Component {
           <div className="card__content">
             <p>Select one or more of your <strong>{ this.state.playlists.length }</strong> playlists to add the selected tracks:</p>
 
-            <div className="alert alert--bad">This is an irreversible action. If you add songs to a Spotify Playlist, this tool will not be able to remove them.</div>
+            <IrreversibleWarning />
 
             <br />
 

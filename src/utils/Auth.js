@@ -11,6 +11,7 @@ const Auth = {
 
     if (!status) {
       localStorage.removeItem('pnp_auth_token');
+      localStorage.removeItem('pnp_auth_params');
       localStorage.removeItem('pnp_auth_token_expiration_time');
     }
 
@@ -19,7 +20,12 @@ const Auth = {
 
   login(params) {
     localStorage.setItem('pnp_auth_token', params.access_token);
+    localStorage.setItem('pnp_auth_params', JSON.stringify(params));
     localStorage.setItem('pnp_auth_token_expiration_time', new Date().getTime() + (parseInt(params.expires_in, 10) * 1000)); // seconds to ms
+  },
+
+  me() {
+    return JSON.parse(localStorage.getItem('pnp_auth_params')) || {};
   },
 
   token() {

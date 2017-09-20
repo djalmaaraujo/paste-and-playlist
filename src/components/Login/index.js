@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom'
 
 import './index.css';
 import Auth from '../../utils/Auth';
+import Spotify from '../../utils/Spotify';
 
 class Login extends Component {
   constructor(props) {
@@ -68,7 +69,13 @@ class Login extends Component {
       };
 
       Auth.login(params);
-      this.setState({logged: true})
+      const me = Spotify.me()
+
+      me.then((me) => {
+        console.log(me);
+        Auth.login(Object.assign(params, me));
+        this.setState({logged: true})
+      });
     }
   }
 

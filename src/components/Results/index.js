@@ -26,6 +26,8 @@ class Results extends Component {
     let totalMatches = this.state.totalMatches;
 
     this.props.query.map((line) => {
+      if (!line) return;
+
       const [ artist, title ] = line.split('-');
 
       const search = Spotify.search(artist, title);
@@ -53,8 +55,26 @@ class Results extends Component {
     });
   }
 
+  _tracksSelected() {
+    const tracks = JSON.parse(localStorage.getItem('playLists')) || [];
+
+    return tracks.length;
+  }
+
   _addToExistingPlaylist() {
+    if (this._tracksSelected() <= 0) {
+      return alert("Select at least one song");
+    }
+
     this.setState({redirectTo: 'add-to-playlist'});
+  }
+
+  _createNewPlaylist() {
+    if (this._tracksSelected() <= 0) {
+      return alert("Select at least one song");
+    }
+
+    this.setState({redirectTo: 'create-new-playlist'});
   }
 
   render() {
@@ -94,7 +114,7 @@ class Results extends Component {
 
               <a className="button button--primary" onClick={this._addToExistingPlaylist.bind(this)}>Add to an existing playlist</a>
               <span>&nbsp; or &nbsp;</span>
-              <a className="button button--ok" onClick={this._addToExistingPlaylist.bind(this)}>Create a new playlist</a>
+              <a className="button button--ok" onClick={this._createNewPlaylist.bind(this)}>Create a new playlist</a>
             </div>
           </div>
         </section>

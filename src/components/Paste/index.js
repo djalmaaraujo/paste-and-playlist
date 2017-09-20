@@ -11,6 +11,15 @@ export default class Paste extends Component {
     this.props._handleChange(target.value);
   }
 
+  _submitSearch() {
+    if (this.state.tracks.trim() === '') {
+      this.tracksInput.focus();
+      return alert('Paste your songs!');
+    }
+
+    this.props._submitSearch();
+  }
+
   render() {
     return (
       <div>
@@ -24,6 +33,7 @@ export default class Paste extends Component {
 
             <textarea
               value={this.state.tracks}
+              ref={(value) => { this.tracksInput = value; }}
               onChange={this._handleChange.bind(this)}
               className="paste"
               autoFocus
@@ -33,7 +43,7 @@ export default class Paste extends Component {
 
             <button
               className="button button--ok"
-              onClick={this.props._submitSearch.bind(this)}
+              onClick={this._submitSearch.bind(this)}
             >Start searching
             </button>
           </div>

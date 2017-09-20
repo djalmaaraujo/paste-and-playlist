@@ -45,6 +45,8 @@ class Search extends Component {
     if (!Auth.isLogged()) {
       this.setState({ redirectTo: '/' });
     }
+
+    localStorage.removeItem('playLists');
   }
 
   render() {
