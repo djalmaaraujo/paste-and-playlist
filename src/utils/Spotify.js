@@ -100,7 +100,7 @@ const Spotify = {
         body: JSON.stringify({
           name: playlistName,
           public: false,
-          description: `Created using paste'n'Playlist!. Create yours too: https://djalmaaraujo.github.io/paste-and-playlist/`
+          description: `Created using paste'n'Playlist!. Create yours too: https://pasteandplaylist.now.sh/`
         })
       });
 

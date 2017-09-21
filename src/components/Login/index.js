@@ -8,7 +8,7 @@ import './index.css';
 import Auth from '../../utils/Auth';
 import Spotify from '../../utils/Spotify';
 
-const PUBLIC_URL = 'http://8747a09b.ngrok.io'
+const PUBLIC_URL = 'https://pasteandplaylist.now.sh'
 
 class Login extends Component {
   constructor(props) {
