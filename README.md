@@ -4,7 +4,7 @@
 
 Live at [https://pasteandplaylist.now.sh](https://pasteandplaylist.now.sh)
 
-![demo](http://g.recordit.co/MZkQYXvs1Y.gif)
+[Demo](http://g.recordit.co/MZkQYXvs1Y.gif)
 
 Paste a list of songs with the pattern: Iron Maiden - Run to the hills (artist name - song title) and the tool will try to create a playlist with the spotify tracks found. You can choose to add the results to an existing playlist or create a new one.
 
