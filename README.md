@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://image.ibb.co/kvvpB5/favicon.jpg" alt="favicon" border="0"></p>
 
-Live at [https://pasteandplaylist.now.sh](https://pasteandplaylist.now.sh)
+Live at [https://spotify.djalmaaraujo.com](https://spotify.djalmaaraujo.com)
 
 [Demo](http://g.recordit.co/MZkQYXvs1Y.gif)
 
