@@ -2,9 +2,9 @@
 
 <p align="center"><img src="https://image.ibb.co/kvvpB5/favicon.jpg" alt="favicon" border="0"></p>
 
-Live at [https://spotify.djalmaaraujo.com](https://spotify.djalmaaraujo.com)
+Live at [https://pasteandplaylist.vercel.app/](https://pasteandplaylist.vercel.app/)
 
-[DEMO](https://build-ghzapjfict.now.sh/)
+[DEMO](https://pasteandplaylist.vercel.app/)
 
 Paste a list of songs with the pattern: Iron Maiden - Run to the hills (artist name - song title) and the tool will try to create a playlist with the spotify tracks found. You can choose to add the results to an existing playlist or create a new one.
 
